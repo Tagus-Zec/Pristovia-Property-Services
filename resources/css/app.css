@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: #d6ae29;
+    --navy: #002147;
+    --navy-dark: #00152e;
+    --navy-light: #0B1622;
+    --gold: #C5A022;
+    --neutral-light: #f8fafc;
+    --glass-bg: rgba(255, 255, 255, 0.95);
+    --glass-border: rgba(197, 160, 34, 0.2);
+  }
+
+  [data-theme="dark"] {
+    --glass-bg: rgba(0, 21, 46, 0.95);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --neutral-light: #00152e;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  [x-cloak] { display: none !important; }
+
+  body {
+    @apply font-inter text-navy bg-neutral-light transition-colors duration-500 ease-in-out antialiased overflow-x-hidden;
+  }
+
+  .dark body {
+    @apply text-white bg-navy-dark;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply backdrop-blur-xl border;
+    background-color: var(--glass-bg);
+    border-color: var(--glass-border);
+  }
+
+  .navbar {
+    @apply fixed top-0 w-full z-[1000] py-6 transition-all duration-500 ease-in-out;
+  }
+
+  .navbar.scrolled {
+    @apply py-3 glass-card shadow-2xl;
+  }
+
+  .btn {
+    @apply px-10 py-4 rounded-xl font-bold transition-all duration-500 inline-block cursor-pointer border-none text-center transform active:scale-95 select-none;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .btn-primary {
+    @apply text-white hover:-translate-y-1 hover:shadow-2xl relative overflow-hidden;
+    background: linear-gradient(135deg, #C5A022 0%, #D4AF37 100%);
+  }
+
+  .shadow-glow {
+    box-shadow: 0 0 20px rgba(197, 160, 34, 0.4);
+  }
+
+  .premium-gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-[#E5C158] to-primary;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary text-primary bg-transparent hover:bg-primary hover:text-white;
+  }
+
+  .mobile-menu-toggle {
+    @apply outline-none focus:outline-none;
+  }
+
+  .service-card {
+    @apply glass-card p-10 rounded-2xl transition-all duration-500 relative overflow-hidden flex flex-col h-full border-transparent hover:-translate-y-4 hover:shadow-3xl hover:border-primary/40;
+  }
+
+  .form-input {
+    @apply w-full p-4 border-2 border-navy/10 rounded-xl outline-none transition-all duration-300 bg-white text-navy focus:border-primary focus:ring-4 focus:ring-primary/10 font-inter font-medium;
+  }
+
+  .dark .form-input {
+    @apply border-white/10 bg-navy-light text-white;
+  }
+
+  .reveal {
+    @apply opacity-0 translate-y-10 transition-all duration-700 ease-out;
+  }
+
+  .reveal.active {
+    @apply opacity-100 translate-y-0;
+  }
+  
+  /* Comparison Slider */
+  .comparison-slider { @apply relative w-full overflow-hidden select-none; }
+  .comparison-before { @apply absolute inset-0 w-full h-full object-cover; }
+  .comparison-after { @apply absolute inset-0 w-full h-full object-cover; clip-path: inset(0 0 0 50%); }
+  .comparison-handle { @apply absolute top-0 bottom-0 w-1 bg-primary left-1/2 -translate-x-1/2 z-20 cursor-ew-resize; }
+  .comparison-handle::after { content: ''; @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-primary rounded-full border-4 border-white shadow-xl; }
+}
+
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }

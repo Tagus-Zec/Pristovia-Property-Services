@@ -1,0 +1,45 @@
+# =========================
+# Laravel / PHP
+# =========================
+/vendor
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/storage/logs
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+
+# Environment files
+.env
+.env.backup
+.env.production
+.env.testing
+
+# Composer
+composer.phar
+composer.lock
+
+# Node
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# Build
+/public/build
+.mix-manifest.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode
+.idea
+
+# Logs
+*.log
+
+# PHPUnit
+/phpunit.xml
