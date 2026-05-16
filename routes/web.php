@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\Admin\ContactAdminController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +29,10 @@ Route::get('/get-quote', function () {
     return view('pages.quote');
 })->name('quote.page');
 
+use App\Http\Controllers\ContactController;
+
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
 /*
 |--------------------------------------------------------------------------
 | admin Pages
@@ -35,6 +41,14 @@ Route::get('/get-quote', function () {
 
 Route::get('/admin/quotes', [QuoteController::class, 'index'])
     ->name('admin.quotes.index');
+
+Route::prefix('admin')->group(function () {
+    Route::get('/contacts', [\App\Http\Controllers\Admin\ContactAdminController::class, 'index']);
+    Route::get('/contacts/{id}', [\App\Http\Controllers\Admin\ContactAdminController::class, 'show']);
+});
+
+Route::get('/admin/contacts', [ContactAdminController::class, 'index']);
+
 /*
 |--------------------------------------------------------------------------
 | Services Pages
