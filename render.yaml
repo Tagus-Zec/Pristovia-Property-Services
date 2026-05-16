@@ -1,0 +1,5 @@
+services:
+  - type: web
+    name: pristovia-property-services
+    env: docker
+    plan: free
